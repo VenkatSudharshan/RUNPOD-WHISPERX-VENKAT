@@ -6,7 +6,7 @@ WORKDIR /
 # Update and upgrade the system packages (Worker Template)
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y ffmpeg wget && \
+    apt-get install -y ffmpeg wget git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -23,7 +23,7 @@ RUN pip install --no-cache-dir -r /builder/requirements.txt --no-deps && \
     pip install --no-cache-dir -r /builder/requirements.txt
 
 # Download VAD model directly
-RUN wget -O /models/vad/whisperx-vad-segmentation.bin https://github.com/m-bain/whisperX/raw/main/whisperx/models/vad.bin
+RUN wget -O /models/vad/whisperx-vad-segmentation.bin https://huggingface.co/spaces/m-bain/whisperX/resolve/main/assets/models/vad.bin
 
 # Copy the rest of the builder files
 COPY builder /builder
