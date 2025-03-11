@@ -3,7 +3,7 @@ torch==2.0.0+cu117
 torchvision==0.15.0+cu117
 torchaudio==2.0.0+cu117
 pydub
-whisperx==3.1.1
+git+https://github.com/m-bain/whisperx.git
 pyannote.audio==3.1.1
 runpod
 cog
