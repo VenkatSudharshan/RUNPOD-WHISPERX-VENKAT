@@ -51,12 +51,12 @@ INPUT_VALIDATIONS = {
     'diarization': {
         'type': bool,
         'required': False,
-        'default': False
+        'default': True
     },
     'huggingface_access_token': {
         'type': str,
         'required': False,
-        'default': None
+        'default': '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'
     },
     'min_speakers': {
         'type': int,
