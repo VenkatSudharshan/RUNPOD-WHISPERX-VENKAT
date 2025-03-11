@@ -23,7 +23,9 @@ RUN pip install --upgrade pip && \
 # Download VAD model
 # Download VAD model directly from HuggingFace
 RUN mkdir -p /root/.cache/whisperx && \
-    wget -O /root/.cache/whisperx/vad.bin https://huggingface.co/spaces/m-bain/whisperX/resolve/main/assets/models/vad.bin
+    wget --header="Authorization: Bearer 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" \
+    -O /root/.cache/whisperx/vad.bin \
+    https://huggingface.co/spaces/m-bain/whisperX/resolve/main/assets/models/vad.bin
 
 # Copy the rest of the builder files
 COPY builder /builder
