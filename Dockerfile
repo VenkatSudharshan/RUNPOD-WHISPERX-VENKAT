@@ -21,7 +21,9 @@ RUN pip install --upgrade pip && \
     pip install -r /builder/requirements.txt
 
 # Download VAD model
-RUN python -c "import whisperx; from whisperx.vad import load_vad_model; load_vad_model('cpu')"
+# Download VAD model directly from HuggingFace
+RUN mkdir -p /root/.cache/whisperx && \
+    wget -O /root/.cache/whisperx/vad.bin https://huggingface.co/spaces/m-bain/whisperX/resolve/main/assets/models/vad.bin
 
 # Copy the rest of the builder files
 COPY builder /builder
