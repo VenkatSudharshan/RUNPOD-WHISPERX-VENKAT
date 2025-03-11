@@ -1,7 +1,7 @@
---extra-index-url https://download.pytorch.org/whl/cu121
-torch==2.0.1
-torchvision==0.15.1
-torchaudio==2.0.1
+--extra-index-url https://download.pytorch.org/whl/cu117
+torch==2.0.0+cu117
+torchvision==0.15.0+cu117
+torchaudio==2.0.0+cu117
 pydub
 whisperx==3.1.1
 pyannote.audio==2.1.1
