@@ -1,4 +1,4 @@
-FROM runpod/pytorch:3.10-2.0.0-117
+FROM runpod/pytorch:3.10-2.0.1-117
 
 SHELL ["/bin/bash", "-c"]
 WORKDIR /
@@ -10,18 +10,20 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Create cache directory
-RUN mkdir -p /cache/models
+# Create cache directory and required folders
+RUN mkdir -p /cache/models && \
+    mkdir -p /root/.cache/torch/hub/checkpoints && \
+    mkdir -p /models/vad
 
 # Copy only requirements file first to leverage Docker cache
 COPY builder/requirements.txt /builder/requirements.txt
 
-# Install Python dependencies (Worker Template)
-RUN pip install --upgrade pip && \
-    pip install -r /builder/requirements.txt
+# Install Python dependencies without upgrading existing packages
+RUN pip install --no-cache-dir -r /builder/requirements.txt --no-deps && \
+    pip install --no-cache-dir -r /builder/requirements.txt
 
-# Download VAD model
-RUN python -c "import whisperx; from whisperx.vad import load_vad_model; load_vad_model('cpu')"
+# Download VAD model directly
+RUN wget -O /models/vad/whisperx-vad-segmentation.bin https://github.com/m-bain/whisperX/raw/main/whisperx/models/vad.bin
 
 # Copy the rest of the builder files
 COPY builder /builder
