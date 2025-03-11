@@ -1,4 +1,4 @@
-FROM runpod/pytorch:3.10-2.0.1-117
+FROM runpod/pytorch:3.10-2.0.0-117
 
 SHELL ["/bin/bash", "-c"]
 WORKDIR /
