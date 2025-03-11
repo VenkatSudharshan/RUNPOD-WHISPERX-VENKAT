@@ -37,7 +37,7 @@ download "https://huggingface.co/Systran/faster-whisper-large-v3/resolve/main/vo
 vad_model_dir="${MODELS_DIR}/vad"
 mkdir -p $vad_model_dir
 
-download "https://huggingface.co/m-bain/whisperx-vad/resolve/main/model.bin" "$vad_model_dir/whisperx-vad-segmentation.bin"
+#download "https://huggingface.co/m-bain/whisperx-vad/resolve/main/model.bin" "$vad_model_dir/whisperx-vad-segmentation.bin"
 download "https://download.pytorch.org/torchaudio/models/wav2vec2_fairseq_base_ls960_asr_ls960.pth" "/root/.cache/torch/hub/checkpoints/wav2vec2_fairseq_base_ls960_asr_ls960.pth"
 
 python3 -c "
